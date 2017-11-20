@@ -26,14 +26,14 @@ def remote(cmd, logfile):
 
 
 def backfill_remote(TOTAL_DAYS):
-    products = ['gdax.BTC-EUR', 'gdax.BTC-USD', 'gdax.BTC-GBP']+['gdax.ETH-BTC', 'poloniex.ETH-BTC']
+    products = ['gdax.BTC-USD', 'gdax.LTC-USD', 'gdax.ETH-USD']
     for instrument in products:
         cmd = 'env node ../../zenbot.js backfill {instrument} --days {days}'.format(days=TOTAL_DAYS, instrument=instrument)
         remote(cmd, 'backfill_'+instrument)
 
 
 def backfill_local(TOTAL_DAYS):
-    products = ['gdax.BTC-EUR', 'gdax.BTC-USD', 'gdax.BTC-GBP']+['gdax.ETH-BTC', 'poloniex.ETH-BTC']
+    products = ['gdax.LTC-USD', 'gdax.BTC-USD', 'gdax.ETH-USD']
     for instrument in products:
         cmd = 'env node ../../zenbot.js backfill {instrument} --days {days}'.format(days=TOTAL_DAYS, instrument=instrument)
         local(cmd)

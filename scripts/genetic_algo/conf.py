@@ -7,6 +7,7 @@ selectors = {
     'ETH-EUR': ['gdax.ETH-EUR'],
     'ETH-USD': ['gdax.ETH-USD'],
     'ETH-CUR': ['gdax.ETH-USD', 'gdax.ETH-EUR'],
+    'BTC-USD': ['gdax.BTC-USD'],
 }
 partitions = 2
 selectivity = 0.3

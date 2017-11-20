@@ -43,7 +43,7 @@ class Andividual(Individual):
             self.append(50 + (random.random() - 0.5) * 100)
 
     def __repr__(self):
-        return colored(f"{self.cmdline}  {super(Andividual, self).__repr__()}", 'grey')
+        return colored("{self.cmdline}  {super(Andividual, self).__repr__()}", 'grey')
 
     @property
     def instrument(self):
@@ -68,9 +68,9 @@ class Andividual(Individual):
     def params(self) -> List[str]:
         def format(key, value):
             if isinstance(value, float):
-                return f'--{key} {value:.6f}'
+                return '--{key} {value:.6f}'
             else:
-                return f'--{key} {value}'
+                return '--{key} {value}'
 
         params = [format(key, value) for key, value in self.compress()]
         return params
@@ -112,7 +112,7 @@ class Andividual(Individual):
         elif 'greed' == param:
             res = value/10.0
         else:
-            raise ValueError(colored(f"I don't understand {param} please add it to evaluation.py", 'red'))
+            raise ValueError(colored("I don't understand {param} please add it to evaluation.py", 'red'))
         return param, res
 
 
@@ -140,4 +140,4 @@ def time_params(days: int, partitions: int) -> List[str]:
     now = datetime.date.today()
     delta = datetime.timedelta(days=days)
     splits = [now - delta / partitions * i for i in range(partitions + 1)][::-1]
-    return [f' --start {start} --end {end}' for start, end in zip(splits, splits[1:])]
+    return [' --start {start} --end {end}' for start, end in zip(splits, splits[1:])]

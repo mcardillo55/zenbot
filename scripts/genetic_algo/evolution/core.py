@@ -10,20 +10,20 @@ from .utils import log_stuff
 def algorithm(individual,popsize,map,evaluate,select,breed,mutate,stats,history,hof):
     # Create initial Population and evaluate it
     population = set()
-    print(colored(f"Sampling an initial valid population, this may take a while...", 'blue'))
+    print(colored("Sampling an initial valid population, this may take a while...", 'blue'))
     while len(population) < popsize:
-        print(colored(f"Currently {len(population)} valid individuals", 'blue'))
+        print(colored("Currently {len(population)} valid individuals", 'blue'))
         would_be = [individual() for _ in range(popsize)]
         evaluate_group(would_be,map,evaluate)
         population = population | set(would_be)
     # Commence evolution
     for g in range(0, 1000):
         log_stuff(g, history, hof, population, stats)
-        print(colored(f"It's breeding season, we're expecting new members of the tribe...", 'blue'))
+        print(colored("It's breeding season, we're expecting new members of the tribe...", 'blue'))
         offspring = breed(population)
-        print(colored(f"Radiation and toxic waste are causing mutations in the population...", 'blue'))
+        print(colored("Radiation and toxic waste are causing mutations in the population...", 'blue'))
         mutants = mutate(population)
-        print(colored(f"Summer is here, evaluating our new arrivals...", 'blue'))
+        print(colored("Summer is here, evaluating our new arrivals...", 'blue'))
         evaluate_group(offspring + mutants, map,evaluate)
         survivors = select(set(offspring) | set(mutants) | population)
         population = survivors
@@ -46,7 +46,7 @@ def breed(population):
         child1, child2 = parent1 + parent2
         offspring.append(child1)
         offspring.append(child2)
-    print(colored(len(offspring), 'green') + colored(f" children have been born.", 'blue'))
+    print(colored(len(offspring), 'green') + colored(" children have been born.", 'blue'))
     return offspring
 
 
@@ -55,5 +55,5 @@ def mutate(population):
     for individual in population:
         if random.random() < mutpb:
             mutants.append(~individual)
-    print(colored(len(mutants), 'green') + colored(f" individuals have mutated.", 'blue'))
+    print(colored(len(mutants), 'green') + colored(" individuals have mutated.", 'blue'))
     return mutants

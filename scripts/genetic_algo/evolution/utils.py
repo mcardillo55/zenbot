@@ -28,7 +28,7 @@ def log_stuff(g, history, hof, population, stats):
     record = stats.compile(population)
     hof.update(population)
     hof.persist()
-    print(colored(f'\nGeneration {g} {record}', 'green') )
+    print(colored('\nGeneration {g} {record}', 'green') )
     # print(hof)
 
 

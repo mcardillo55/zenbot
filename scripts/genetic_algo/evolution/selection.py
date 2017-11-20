@@ -40,13 +40,13 @@ def select_specialists(individuals: Iterable[Individual], count: int):
 
 def log_stuff(elites, rest: Set, specialists):
     print(colored("\n\nWinter has come, weeding out the unworthy.", 'blue'))
-    print(f"{len(elites)} Elites will survive, they're currently the strongest:")
+    print("{len(elites)} Elites will survive, they're currently the strongest:")
     for elite in sorted(elites, key=attrgetter('objective'), reverse=True):
         print(elite)
-    print(f"{len(specialists)} Specialists will survive, they're the best in their domain:")
+    print("{len(specialists)} Specialists will survive, they're the best in their domain:")
     for specialist in specialists:
         print(specialist)
-    print(f"Some other have fought their way through:")
+    print("Some other have fought their way through:")
     for r in random.sample(rest, len(rest) // 5):
         print(r)
     print(colored('...', 'grey'))

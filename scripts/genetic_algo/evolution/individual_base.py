@@ -19,7 +19,7 @@ class Individual(list):
         return sum(self)
 
     def __repr__(self):
-        return f"{list(self.fitness.values)} {self.objective} {self.name}"
+        return "{list(self.fitness.values)} {self.objective} {self.name}"
 
     def __init__(self, *args, **kwargs):
         self.name = names.get_full_name()
@@ -36,7 +36,7 @@ class Individual(list):
     def __add__(self, other):
         child1, child2 = self.__class__.mate(deepcopy(self), deepcopy(other))
         if False:
-            print(f"\nMating: with {self.__class__.mate}")
+            print("\nMating: with {self.__class__.mate}")
             print(self)
             print(other)
             print('Children:')
@@ -49,7 +49,7 @@ class Individual(list):
     def __invert__(self):
         mutant = self.__class__.mutate(deepcopy(self))[0]  # DON'T THINK ABOUT REMOVING THE ZERO
         if False:
-            print(f"\nMutating: with {self.__class__.mutate}")
+            print("\nMutating: with {self.__class__.mutate}")
             print(self)
             print(mutant)
         del mutant.fitness.values

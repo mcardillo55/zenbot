@@ -20,8 +20,8 @@ def main(instrument, days, popsize, strategy='trend_ema'):
     Andividual.mate = cxTwoPoint
     Andividual.mutate = partial(mutGaussian, mu=0, sigma=sigma, indpb=indpb)
     Andividual.strategy = strategy
-    print(colored(f"Mating function is ", 'blue') + colored(Andividual.mate, 'green'))
-    print(colored(f"Mutating function is ", 'blue') + colored(Andividual.mutate, 'green'))
+    print(colored("Mating function is ", 'blue') + colored(Andividual.mate, 'green'))
+    print(colored("Mutating function is ", 'blue') + colored(Andividual.mutate, 'green'))
     res = evolve(evaluate, Andividual, popsize)
     return res
 

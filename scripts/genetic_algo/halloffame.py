@@ -20,7 +20,7 @@ class ObjectiveFunctionHallOfFame(object):
 
     def __repr__(self):
         header = ["Current Hall of Fame:"]
-        report = [f"{ind}" for ind in sorted(self.inner, key=attrgetter('objective'), reverse=True)]
+        report = ["{ind}" for ind in sorted(self.inner, key=attrgetter('objective'), reverse=True)]
         return "\n".join(header + report)
 
     def persist(self):
