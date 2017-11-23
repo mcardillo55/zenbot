@@ -46,7 +46,7 @@ let runCommand = (taskStrategyName, phenotype, cb) => {
     rsi: `--rsi_periods=${phenotype.rsi_periods} --oversold_rsi=${phenotype.oversold_rsi} --overbought_rsi=${phenotype.overbought_rsi} --rsi_recover=${phenotype.rsi_recover} --rsi_drop=${phenotype.rsi_drop} --rsi_divisor=${phenotype.rsi_divisor}`,
     sar: `--sar_af=${phenotype.sar_af} --sar_max_af=${phenotype.sar_max_af}`,
     speed: `--baseline_periods=${phenotype.baseline_periods} --trigger_factor=${phenotype.trigger_factor}`,
-    stddev_priv: `--trend_ema=${phenotype.trend_ema} --upper_stddev=${phenotype.upper_stddev} --${phenotype.lower_stddev}`,
+    stddev_priv: `--trend_ema=${phenotype.trend_ema} --upper_stddev=${phenotype.upper_stddev} --lower_stddev=${phenotype.lower_stddev}`,
     trend_ema: `--trend_ema=${phenotype.trend_ema} --oversold_rsi=${phenotype.oversold_rsi} --oversold_rsi_periods=${phenotype.oversold_rsi_periods} --neutral_rate=auto`,
     trust_distrust: `--sell_threshold=${phenotype.sell_threshold} --sell_threshold_max=${phenotype.sell_threshold_max} --sell_min=${phenotype.sell_min} --buy_threshold=${phenotype.buy_threshold} --buy_threshold_max=${phenotype.buy_threshold_max} --greed=${phenotype.greed}`,
     ta_macd: `--ema_short_period=${phenotype.ema_short_period} --ema_long_period=${phenotype.ema_long_period} --signal_period=${phenotype.signal_period} --up_trend_threshold=${phenotype.up_trend_threshold} --down_trend_threshold=${phenotype.down_trend_threshold} --overbought_rsi_periods=${phenotype.overbought_rsi_periods} --overbought_rsi=${phenotype.overbought_rsi}`,
