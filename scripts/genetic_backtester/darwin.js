@@ -38,6 +38,7 @@ let NEUTRAL_RATE_AUTO = false;
 let iterationCount = 0;
 
 let runCommand = (taskStrategyName, phenotype, cb) => {
+  let upper_stddev = phenotype.lower_stddev + phenotype.stddev_diff
   let commonArgs = `--strategy=${taskStrategyName} --period=${phenotype.period} --min_periods=${phenotype.min_periods} --markup_pct=${phenotype.markup_pct} --order_type=${phenotype.order_type} --sell_stop_pct=${phenotype.sell_stop_pct} --buy_stop_pct=${phenotype.buy_stop_pct} --profit_stop_enable_pct=${phenotype.profit_stop_enable_pct} --profit_stop_pct=${phenotype.profit_stop_pct}`;
   let strategyArgs = {
     cci_srsi: `--cci_periods=${phenotype.rsi_periods} --rsi_periods=${phenotype.srsi_periods} --srsi_periods=${phenotype.srsi_periods} --srsi_k=${phenotype.srsi_k} --srsi_d=${phenotype.srsi_d} --oversold_rsi=${phenotype.oversold_rsi} --overbought_rsi=${phenotype.overbought_rsi} --oversold_cci=${phenotype.oversold_cci} --overbought_cci=${phenotype.overbought_cci} --constant=${phenotype.constant}`,
@@ -46,7 +47,7 @@ let runCommand = (taskStrategyName, phenotype, cb) => {
     rsi: `--rsi_periods=${phenotype.rsi_periods} --oversold_rsi=${phenotype.oversold_rsi} --overbought_rsi=${phenotype.overbought_rsi} --rsi_recover=${phenotype.rsi_recover} --rsi_drop=${phenotype.rsi_drop} --rsi_divisor=${phenotype.rsi_divisor}`,
     sar: `--sar_af=${phenotype.sar_af} --sar_max_af=${phenotype.sar_max_af}`,
     speed: `--baseline_periods=${phenotype.baseline_periods} --trigger_factor=${phenotype.trigger_factor}`,
-    stddev_priv: `--trend_ema=${phenotype.trend_ema} --upper_stddev=${phenotype.upper_stddev} --lower_stddev=${phenotype.lower_stddev}`,
+    stddev_priv: `--trend_ema=${phenotype.trend_ema} --upper_stddev=${upper_stddev} --lower_stddev=${phenotype.lower_stddev}`,
     trend_ema: `--trend_ema=${phenotype.trend_ema} --oversold_rsi=${phenotype.oversold_rsi} --oversold_rsi_periods=${phenotype.oversold_rsi_periods} --neutral_rate=auto`,
     trust_distrust: `--sell_threshold=${phenotype.sell_threshold} --sell_threshold_max=${phenotype.sell_threshold_max} --sell_min=${phenotype.sell_min} --buy_threshold=${phenotype.buy_threshold} --buy_threshold_max=${phenotype.buy_threshold_max} --greed=${phenotype.greed}`,
     ta_macd: `--ema_short_period=${phenotype.ema_short_period} --ema_long_period=${phenotype.ema_long_period} --signal_period=${phenotype.signal_period} --up_trend_threshold=${phenotype.up_trend_threshold} --down_trend_threshold=${phenotype.down_trend_threshold} --overbought_rsi_periods=${phenotype.overbought_rsi_periods} --overbought_rsi=${phenotype.overbought_rsi}`,
@@ -332,7 +333,7 @@ let strategies = {
 
     // -- strategy
     trend_ema: Range(TREND_EMA_MIN, TREND_EMA_MAX),
-    upper_stddev: RangeFloat(0.1, 4.0),
+    stddev_diff: RangeFloat(0.1, 4.0),
     lower_stddev: RangeFloat(0.1, 4.0)
   },
   trend_ema: {
